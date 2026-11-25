@@ -57,14 +57,10 @@ void ContentManagerView::initializeGL()
 
 void ContentManagerView::paintGL()
 {
-    const bool dark = KiwixApp::instance() && KiwixApp::instance()->isDarkTheme();
+    const QColor background = themeColor("PAGE_BACKGROUND");
     QOpenGLFunctions *f = QOpenGLContext::currentContext() ? QOpenGLContext::currentContext()->functions() : nullptr;
     if (f) {
-        if (dark) {
-            f->glClearColor(0.125f, 0.129f, 0.141f, 1.0f);
-        } else {
-            f->glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-        }
+        f->glClearColor(background.redF(), background.greenF(), background.blueF(), 1.0f);
         f->glClear(GL_COLOR_BUFFER_BIT);
     }
 }

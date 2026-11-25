@@ -14,8 +14,7 @@ void ContentManagerHeader::paintSection(QPainter* painter, const QRect& rect, in
     // This is required so that the sort indicator icon is not shown in first column
     if (logicalIndex == 0) {
         painter->save();
-        const bool dark = KiwixApp::instance() && KiwixApp::instance()->isDarkTheme();
-        painter->fillRect(rect, dark ? QColor("#202124") : QColor("#ffffff"));
+        painter->fillRect(rect, themeColor("PAGE_BACKGROUND"));
         painter->restore();
         return;
     }
